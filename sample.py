@@ -7,14 +7,17 @@ import pickle
 import time
 import os
 import json
+
 from torchvision import transforms
+from PIL import Image
+
 from utils.build_vocab import Vocabulary
 from utils.model import EncoderCNN, DecoderRNN
-from PIL import Image
+from utils.visualize import show_upp
+
 
 torch.manual_seed(7)
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-
 
 def load_openpose(video_path, openpose_path, seq_length):
 	openpose = []
@@ -97,9 +100,20 @@ def main(args):
 	sampled_ids = sampled_ids[0].cpu().numpy()
 	sampled_poses = []
 	for pose_id in sampled_ids:
-		pose = vocab.poses[pose_id-1]
+		if args.upp:
+			pose = vocab.upp_poses[pose_id-1]
+		elif args.low:
+			pose = vocab.low_poses[pose_id-1]
+		else:
+			print('Please specify upper/lower body model to test')
+			exit(0)
 		sampled_poses.append(pose)
-	print sampled_ids
+
+		if args.visualize:
+			pose3d = [float(x) for x in pose.split(',')]
+			pose3d = np.reshape(pose3d, (-1,3))
+			show_upp(pose3d)
+
 	for i in range(0, len(sampled_poses)):
 		path = args.output + 'r' + str(i+1) + '.txt'
 		with open(path, 'w') as f:
@@ -123,8 +137,10 @@ if __name__ == '__main__':
 	parser.add_argument('--embed_size', type=int , default=256, help='dimension of word embedding vectors')
 	parser.add_argument('--hidden_size', type=int , default=512, help='dimension of lstm hidden states')
 	parser.add_argument('--num_layers', type=int , default=2, help='number of layers in lstm')
-	parser.add_argument('--seq_length', type=int, default=1025, help='length of the pose/video sequences')
+	parser.add_argument('--seq_length', type=int, default=1024, help='length of the pose/video sequences')
 	parser.add_argument('--crop_size', type=int, default=224 , help='size for randomly cropping images')
+
+	parser.add_argument('--visualize', action='store_true', help='set flag if training lower body model')
 
 	args = parser.parse_args()
 	main(args)
