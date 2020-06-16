@@ -1,5 +1,12 @@
 # You2Me: Inferring Body Pose in Egocentric Video via First and Second Person Interactions (CVPR 2020)
 
+[![report](https://img.shields.io/badge/arXiv-1904.09882-b31b1b.svg)](https://arxiv.org/abs/1904.09882#) &nbsp;  [[Project Page]](http://vision.cs.utexas.edu/projects/you2me/)
+
+This repository contains code for "You2Me: Inferring Body Pose in Egocentric Video via First and Second Person Interactions" 
+
+![](data/you2me_preview.gif)
+
+
 ## Install
 Note: Dataset release TBA
 
