@@ -1,8 +1,6 @@
-# You2Me: Inferring Body Pose in Egocentric Video via First and Second Person Interactions (CVPR 2020)
+# [You2Me: Inferring Body Pose in Egocentric Video via First and Second Person Interactions (CVPR 2020)](http://vision.cs.utexas.edu/projects/you2me/) 
 
-[![report](https://img.shields.io/badge/arXiv-1904.09882-b31b1b.svg)](https://arxiv.org/abs/1904.09882#) &nbsp;  [[Project Page]](http://vision.cs.utexas.edu/projects/you2me/)
-
-This repository contains code for "You2Me: Inferring Body Pose in Egocentric Video via First and Second Person Interactions" 
+[![report](https://img.shields.io/badge/arXiv-1904.09882-b31b1b.svg)](https://arxiv.org/abs/1904.09882#)
 
 ![](data/you2me_preview.gif)
 
@@ -29,6 +27,8 @@ Then run the following command:
 `python sample.py --vocab_path <path/to/sample_vocab.pkl> --output <path/to/output_dir> --encoder_path <path/to/trained/encoder.pth> --decoder_path <path/to/trained/decoder.pth> --upp`
 
 Change flag `--upp` to `--low` to test the lower body model.
+
+Include flag `--visualize` to plot the predicted stick figures.
 
 ## Train
 Please generate 

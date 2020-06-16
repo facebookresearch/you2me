@@ -31,7 +31,7 @@ class EncoderCNN(nn.Module):
 
 class DecoderRNN(nn.Module):
 	def __init__(self, embed_size, hidden_size, vocab_size, num_layers, 
-				 num_homog=15, homog_size=9, pose2_size=48):
+				 num_homog=15, homog_size=9, pose2_size=75):
 		super(DecoderRNN, self).__init__()
 		self.embed = nn.Embedding(vocab_size, embed_size)
 		self.lstm = nn.LSTM((embed_size*2) + (homog_size * num_homog) + pose2_size, 
