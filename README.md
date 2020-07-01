@@ -6,7 +6,7 @@
 
 
 ## Install
-Note: Dataset release TBA
+Download [dataset](https://github.com/facebookresearch/you2me/tree/master/data)
 
 Original training done with CUDA 10.2 
 
