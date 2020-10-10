@@ -42,7 +42,7 @@ for your each of your training sequences.
 
 Then run the following command:
 
-`python train.py --model_path <path/to/save/models> --vocab_path <path/to/train_vocab.pkl> --annotation_path <path/to/annotation.pkl> -upp`
+`python train.py --model_path <path/to/save/models> --vocab_path <path/to/train_vocab.pkl> --annotation_path <path/to/annotation.pkl> --upp`
 
 Change flag `--upp` to `--low` to train the lower body model.
 
